@@ -1,0 +1,207 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background: black;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.container {
+    width: 100%;
+    max-width: 450px;
+    background: #fff;
+    border-radius: 15px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    height: 80vh;
+}
+
+header {
+    background: #402fbe;
+    color: #fff;
+    padding: 15px;
+    text-align: center;
+    flex-shrink: 0;
+}
+
+header h1 {
+    font-size: 1.5em;
+    margin-bottom: 5px;
+}
+
+/* Chatbox - YANG DIPERBAIKI */
+#chatbox {
+    flex: 1;
+    padding: 15px;
+    background: #f5f6fa;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+}
+
+/* Custom Scrollbar (opsional) */
+#chatbox::-webkit-scrollbar {
+    width: 8px;
+}
+
+#chatbox::-webkit-scrollbar-track {
+    background: #e0e0e0;
+}
+
+#chatbox::-webkit-scrollbar-thumb {
+    background: #6c5ce7;
+    border-radius: 10px;
+}
+
+#chatbox::-webkit-scrollbar-thumb:hover {
+    background: #402fbe;
+}
+
+/* Pesan */
+.message-container {
+    position: relative;
+    flex-shrink: 0;
+}
+
+.message-container.bot {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.message-container.user {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.message {
+    max-width: 70%;
+    padding: 10px 15px;
+    border-radius: 15px;
+    word-wrap: break-word;
+    margin-top: 10px;
+    opacity: 0;
+    flex-shrink: 0;
+}
+
+/* Animasi pesan */
+@keyframes slideInLeft {
+    from { transform: translateX(-50px); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes slideInRight {
+    from { transform: translateX(50px); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}
+
+.user-message {
+    background: #ccd1d3;
+    color: #000;
+    animation: slideInLeft 0.4s forwards;
+}
+
+.bot-message {
+    background: #6050db;
+    color: #fff;
+    animation: slideInRight 0.4s forwards;
+    word-wrap: break-word;
+}
+
+/* Label user/bot */
+.message-label {
+    position: absolute;
+    top: -5px;
+    font-size: 0.75em;
+    font-weight: bold;
+    opacity: 0;
+    animation: fadeIn 0.4s forwards;
+}
+
+.message-container.bot .message-label {
+    right: 10px;
+    top: -8px;
+}
+
+.message-container.user .message-label {
+    left: 10px;
+    top: -8px;
+}
+
+@keyframes fadeIn {
+    to { opacity: 1; }
+}
+
+/* Input area */
+.input-area {
+    display: flex;
+    padding: 8px 12px;
+    background: rgba(238, 238, 238, 0.95) !important;
+    flex-shrink: 0;
+    border-top: 1px solid #ccc;
+    border-radius: 0 0 15px 15px;
+    z-index: 10;
+    position: relative;
+}
+
+/* Input text */
+#user-input {
+    flex: 1;
+    padding: 10px 15px;
+    border-radius: 20px;
+    border: 1px solid #ccc;
+    outline: none;
+    font-size: 0.95em;
+    background: #fff !important;
+    color: #000;
+    z-index: 10;
+}
+
+#user-input:focus {
+    border-color: #6c5ce7;
+    box-shadow: 0 0 5px rgba(108, 92, 231, 0.3);
+}
+
+/* Tombol kirim */
+#send-btn {
+    margin-left: 8px;
+    padding: 10px 16px;
+    border: none;
+    background: #6c5ce7;
+    color: #fff;
+    border-radius: 20px;
+    cursor: pointer;
+    z-index: 10;
+    box-shadow: 0 0 5px rgba(108,92,231,0.4);
+    transition: all 0.3s ease;
+}
+
+/* Neon saat hover */
+#send-btn:hover {
+    background: #341f97;
+    box-shadow: 0 0 10px #6c5ce7, 0 0 20px #6c5ce7, 0 0 30px #6c5ce7;
+}
+
+#send-btn:active {
+    transform: scale(0.95);
+}
+
+/* Responsive */
+@media (max-width: 500px) {
+    .message { max-width: 85%; }
+    .container { max-width: 100%; height: 90vh; }
+}

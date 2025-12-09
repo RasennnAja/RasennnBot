@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rasennn Bot</title>
+    <link rel="stylesheet" href="bot.css">
+    <link rel="stylesheet" href="aurora.css">
+</head>
+<body>
+    <!-- Background Aurora -->
+    <canvas id="aurora"></canvas>
+
+    <div class="container">
+        <header>
+            <h1>Rasennn Bot</h1>
+            <p>Ketik <b>/help</b> untuk command lebih lanjut</p>
+        </header>
+
+        <div id="chatbox"></div>
+
+        <!-- Input area di paling bawah -->
+        <div class="input-area">
+            <input type="text" id="user-input" placeholder="Ketik command..." autofocus>
+            <button id="send-btn">Kirim</button>
+        </div>
+    </div>
+
+    <script src="aurora.js"></script>
+    <script src="bot.js"></script>
+</body>
+</html>
